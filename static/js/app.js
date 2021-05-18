@@ -5,9 +5,28 @@ const tableData = data;
 // Use d3.select to tell JavaScript to look for <tbody> tags in the HTML
 var tbody = d3.select("tobdy");
 
-// Simple JavaScript console.log statement
-// Remember that the JavaScript syntax uses console.log instead of print
-function printHello() {
-    console.log("Hello there!");
-}
+
+// Create a new function that builds a table "buildTable"
+// Also, pass in "data" as the argument 
+// tbody.html("");—tells JavaScript to use an empty string when creating the table
+
+function buildTable(data) {
+    // First, clear out any existing data
+    tbody.html("");
+  
+    // Next, loop through each object in the data
+    // and append a row and cells for each value in the row
+    data.forEach((dataRow) => {
+      // Append a row to the table body
+      let row = tbody.append("tr");
+  
+      // Loop through each field in the dataRow and add
+      // each value as a table cell (td)
+      Object.values(dataRow).forEach((val) => {
+        let cell = row.append("td");
+        cell.text(val);
+        }
+      );
+    });
+  }
 
